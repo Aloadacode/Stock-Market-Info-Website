@@ -1,2 +1,33 @@
-<h1>Planet Stock</h1>
-<p>Welcome to Planet Stock.</p>
+<%= form_tag root_path, :method => 'POST' do %>
+    <div class="form-group">
+        <%= text_field_tag 'id', nil, placeholder: 'Enter Company Ticker Symbol', size: 50, class: 'form-control' %>
+        <%= submit_tag 'Lookup Stock', class: 'btn btn-primary' %>
+    </div>
+<% end %>
+
+
+<% if @stock %>
+
+    
+    
+    <strong>Company Name: </strong><%= @stock.company_name %> - <%= @stock.symbol %><br/>
+    <strong>Primary Exchange: </strong><%= @stock.primary_exchange %><br/>
+    <strong>Sector: </strong><%= @stock.sector %><br/>
+    <strong>Latest Price ($): </strong><%= @stock.latest_price %><br/>
+    <strong>Day's High ($): </strong><%= @stock.high %><br/>
+    <strong>Day's Low ($): </strong><%= @stock.low %><br/>
+    <strong>Previous Cosing Price ($): </strong><%= @stock.previous_close %><br/>
+    <strong>Market Cap ($): </strong><%= @stock.market_cap %><br/>
+    <strong>Price Earnings Ratio: </strong><%= @stock.pe_ratio %><br/>
+    <strong>Year's High ($): </strong><%= @stock.week52_high %><br/>
+    <strong>Year's Low ($): </strong><%= @stock.week52_low %><br/>
+    
+    
+    
+<% elsif @nothing %>
+    <%= @nothing %>
+<% end %>
+
+<% if @error %>
+    <%= @error %>
+<% end %>
